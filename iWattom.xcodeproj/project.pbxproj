@@ -14,6 +14,10 @@
 		255DE2CE22DF36A200510F7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 255DE2CD22DF36A200510F7C /* Assets.xcassets */; };
 		255DE2D122DF36A200510F7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 255DE2CF22DF36A200510F7C /* LaunchScreen.storyboard */; };
 		255DE2DC22DF36A200510F7C /* iWattomUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255DE2DB22DF36A200510F7C /* iWattomUITests.swift */; };
+		255DE2E722DF36C800510F7C /* WattomAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255DE2E622DF36C800510F7C /* WattomAnimation.swift */; };
+		255DE2E922DF373C00510F7C /* WattomTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255DE2E822DF373C00510F7C /* WattomTouchView.swift */; };
+		255DE2EB22DF378100510F7C /* WattomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255DE2EA22DF378100510F7C /* WattomViewController.swift */; };
+		255DE2ED22DF5D7500510F7C /* Sigma.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255DE2EC22DF5D7500510F7C /* Sigma.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +42,10 @@
 		255DE2D722DF36A200510F7C /* iWattomUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iWattomUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		255DE2DB22DF36A200510F7C /* iWattomUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iWattomUITests.swift; sourceTree = "<group>"; };
 		255DE2DD22DF36A200510F7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		255DE2E622DF36C800510F7C /* WattomAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WattomAnimation.swift; sourceTree = "<group>"; };
+		255DE2E822DF373C00510F7C /* WattomTouchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WattomTouchView.swift; sourceTree = "<group>"; };
+		255DE2EA22DF378100510F7C /* WattomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WattomViewController.swift; sourceTree = "<group>"; };
+		255DE2EC22DF5D7500510F7C /* Sigma.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sigma.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +94,10 @@
 				255DE2CF22DF36A200510F7C /* LaunchScreen.storyboard */,
 				255DE2D222DF36A200510F7C /* Info.plist */,
 				255DE2CA22DF36A000510F7C /* iWattom.xcdatamodeld */,
+				255DE2E622DF36C800510F7C /* WattomAnimation.swift */,
+				255DE2E822DF373C00510F7C /* WattomTouchView.swift */,
+				255DE2EA22DF378100510F7C /* WattomViewController.swift */,
+				255DE2EC22DF5D7500510F7C /* Sigma.swift */,
 			);
 			path = iWattom;
 			sourceTree = "<group>";
@@ -200,8 +212,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				255DE2E722DF36C800510F7C /* WattomAnimation.swift in Sources */,
+				255DE2ED22DF5D7500510F7C /* Sigma.swift in Sources */,
 				255DE2CC22DF36A000510F7C /* iWattom.xcdatamodeld in Sources */,
+				255DE2E922DF373C00510F7C /* WattomTouchView.swift in Sources */,
 				255DE2C622DF36A000510F7C /* ViewController.swift in Sources */,
+				255DE2EB22DF378100510F7C /* WattomViewController.swift in Sources */,
 				255DE2C422DF36A000510F7C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,6 +381,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2F956DJ2LT;
 				INFOPLIST_FILE = iWattom/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -382,6 +399,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2F956DJ2LT;
 				INFOPLIST_FILE = iWattom/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
