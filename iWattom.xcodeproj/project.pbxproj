@@ -17,7 +17,6 @@
 		255DE2E722DF36C800510F7C /* WattomAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255DE2E622DF36C800510F7C /* WattomAnimation.swift */; };
 		255DE2E922DF373C00510F7C /* WattomTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255DE2E822DF373C00510F7C /* WattomTouchView.swift */; };
 		255DE2EB22DF378100510F7C /* WattomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255DE2EA22DF378100510F7C /* WattomViewController.swift */; };
-		255DE2ED22DF5D7500510F7C /* Sigma.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255DE2EC22DF5D7500510F7C /* Sigma.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +44,6 @@
 		255DE2E622DF36C800510F7C /* WattomAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WattomAnimation.swift; sourceTree = "<group>"; };
 		255DE2E822DF373C00510F7C /* WattomTouchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WattomTouchView.swift; sourceTree = "<group>"; };
 		255DE2EA22DF378100510F7C /* WattomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WattomViewController.swift; sourceTree = "<group>"; };
-		255DE2EC22DF5D7500510F7C /* Sigma.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sigma.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +95,6 @@
 				255DE2E622DF36C800510F7C /* WattomAnimation.swift */,
 				255DE2E822DF373C00510F7C /* WattomTouchView.swift */,
 				255DE2EA22DF378100510F7C /* WattomViewController.swift */,
-				255DE2EC22DF5D7500510F7C /* Sigma.swift */,
 			);
 			path = iWattom;
 			sourceTree = "<group>";
@@ -213,7 +210,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				255DE2E722DF36C800510F7C /* WattomAnimation.swift in Sources */,
-				255DE2ED22DF5D7500510F7C /* Sigma.swift in Sources */,
 				255DE2CC22DF36A000510F7C /* iWattom.xcdatamodeld in Sources */,
 				255DE2E922DF373C00510F7C /* WattomTouchView.swift in Sources */,
 				255DE2C622DF36A000510F7C /* ViewController.swift in Sources */,

@@ -140,12 +140,12 @@ class WattomAnimation: UIView {
        // sleep  = UInt32(round((rotationSpeed*1000000)/360))
        // print("will sleep for "+String(sleep))
         
-       let queue = DispatchQueue(label: "work-queue")
+       let queue = DispatchQueue(label: "work-queue", qos: .userInteractive)
         queue.async {
             self.updateAnimation()
         }
         
-        let queue2 = DispatchQueue(label: "push-queue")
+        let queue2 = DispatchQueue(label: "push-queue" , qos: .userInteractive)
         queue2.async {
             self.updateCoordinates()
         }
@@ -209,12 +209,12 @@ class WattomAnimation: UIView {
             if(sartingAngle>=360){
                 sartingAngle = 0
             }
-            sartingAngle = sartingAngle+CGFloat(self.direction*2)
-            sleep = UInt32(round((rotationSpeed*1000000)/180))
+            sartingAngle = sartingAngle+CGFloat(self.direction*1)
+            sleep = UInt32(round((rotationSpeed*1000000)/360))
             usleep(sleep)
             //print(sleep)
             // print(y)
-            if(refreshViewRate==2){
+            if(refreshViewRate==4){
                 DispatchQueue.main.async {
                     self.updateView()
                     }

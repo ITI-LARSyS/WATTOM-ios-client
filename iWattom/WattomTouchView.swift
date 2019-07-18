@@ -50,7 +50,7 @@ class WattomTouchView: UIView {
     }
     
     override func didMoveToSuperview() {
-        let queue = DispatchQueue(label: "work-queue")
+        let queue = DispatchQueue(label: "work-queue" , qos: .userInteractive)
         queue.async {
             self.updateTouchCoords()
         }

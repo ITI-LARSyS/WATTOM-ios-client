@@ -21,7 +21,7 @@ class WattomViewController: UIViewController {
     @IBOutlet weak var wattom6: WattomAnimation!
     
     var correlationRunning:Bool =  true;
-    var correelationFreq:UInt32 =  300000
+    var correelationFreq:UInt32 =  800000
     var x_touchBuffer:[CGFloat]
     var y_touchBuffer:[CGFloat]
     
@@ -44,7 +44,7 @@ class WattomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let queue = DispatchQueue(label: "work-queue")
+        let queue = DispatchQueue(label: "work-queue" , qos: .userInteractive)
         queue.async {
             self.calculateCorreation()
         }
@@ -58,10 +58,68 @@ class WattomViewController: UIViewController {
         
     }
     
+    func covariancePopulation(x: [Double], y: [Double]) -> Double? {
+        let xCount = Double(x.count)
+        let yCount = Double(y.count)
+        
+        if xCount == 0 { return nil }
+        if xCount != yCount { return nil }
+        
+        if let xMean = average(x),
+            let yMean = average(y) {
+            
+            var sum:Double = 0
+            
+            for (index, xElement) in x.enumerated() {
+                let yElement = y[index]
+                
+                sum += (xElement - xMean) * (yElement - yMean)
+            }
+            
+            return sum / xCount
+        }
+        
+        return nil
+    }
+    
+    func sum(_ values: [Double]) -> Double {
+        return values.reduce(0, +)
+    }
+    
+    func average(_ values: [Double]) -> Double? {
+        let count = Double(values.count)
+        if count == 0 { return nil }
+        return sum(values) / count
+    }
+    
+    
+    func standardDeviationPopulation(_ values: [Double]) -> Double? {
+        if let variancePopulation = variancePopulation(values) {
+            return sqrt(variancePopulation)
+        }
+        
+        return nil
+    }
+    
+    func variancePopulation(_ values: [Double]) -> Double? {
+        let count = Double(values.count)
+        if count == 0 { return nil }
+        
+        if let avgerageValue = average(values) {
+            let numerator = values.reduce(0) { total, value in
+                total + pow(avgerageValue - value, 2)
+            }
+            
+            return numerator / count
+        }
+        
+        return nil
+    }
+    
     func pearson(x: [Double], y: [Double]) -> Double? {
-        if let cov = Sigma.covariancePopulation(x: x, y: y),
-            let σx = Sigma.standardDeviationPopulation(x),
-            let σy = Sigma.standardDeviationPopulation(y) {
+        if let cov = covariancePopulation(x: x, y: y),
+            let σx = standardDeviationPopulation(x),
+            let σy = standardDeviationPopulation(y) {
             
             if σx == 0 || σy == 0 { return nil }
             
