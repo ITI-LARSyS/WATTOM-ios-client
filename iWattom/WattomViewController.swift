@@ -11,7 +11,7 @@ import UIKit
 class WattomViewController: UIViewController {
     
     
-
+    // variables for the view elements, there should be a way of adding them programmatically to the view so we get an reference, however for know it works OK.
     @IBOutlet weak var wattomTouch: WattomTouchView!
     @IBOutlet weak var wattom1: WattomAnimation!
     @IBOutlet weak var wattom2: WattomAnimation!
@@ -22,28 +22,24 @@ class WattomViewController: UIViewController {
     
     var correlationRunning:Bool =  true;
     var correelationFreq:UInt32 =  800000
-    var x_touchBuffer:[CGFloat]
-    var y_touchBuffer:[CGFloat]
     
    // var buffer_size:Int = 40
    // var currentIndex:Int = 0
     
+//    might not need these 2 methods now
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        x_touchBuffer = []
-        y_touchBuffer = []
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
     required init?(coder aDecoder: NSCoder) {
        // fatalError("init(coder:) has not been implemented")
-        x_touchBuffer = []
-        y_touchBuffer = []
         super.init(coder:aDecoder)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //thread used for the correlations
         let queue = DispatchQueue(label: "work-queue" , qos: .userInteractive)
         queue.async {
             self.calculateCorreation()
@@ -52,12 +48,16 @@ class WattomViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    //once the view is ready to get away stop the correlation
     override func viewWillDisappear(_ animated: Bool) {
         self.correlationRunning=false
         super.viewWillDisappear(animated)
         
     }
     
+    /*
+     copied from the SIGMA library, https://github.com/evgenyneu/SigmaSwiftStatistics , used it here to avoid static calls
+     */
     func covariancePopulation(x: [Double], y: [Double]) -> Double? {
         let xCount = Double(x.count)
         let yCount = Double(y.count)
@@ -97,7 +97,6 @@ class WattomViewController: UIViewController {
         if let variancePopulation = variancePopulation(values) {
             return sqrt(variancePopulation)
         }
-        
         return nil
     }
     
@@ -109,10 +108,8 @@ class WattomViewController: UIViewController {
             let numerator = values.reduce(0) { total, value in
                 total + pow(avgerageValue - value, 2)
             }
-            
             return numerator / count
         }
-        
         return nil
     }
     
@@ -128,55 +125,18 @@ class WattomViewController: UIViewController {
         
         return nil
     }
-    
-    /*func push(x:Double, y:Double){
-        
-        if(currentIndex < buffer_size){
-            x_buff[currentIndex]=x
-            y_buff[currentIndex]=y
-            currentIndex+=1
-        }else{
-            for index in 0...buffer_size-2{
-                x_buff[index+1] = x_buff[index]
-                y_buff[index+1] = y_buff[index]
-            }
-            x_buff[currentIndex] = x
-            y_buff[currentIndex] = y
-            //currentIndex+=1
-        }
-    }
-    
-    func calculateCorreation(){
-        
-        sleep(4)
-        var x_c_buff:[Double]  = [Double](repeating: 0, count: 40)
-        var y_c_buff:[Double]  = [Double](repeating: 0, count: 40)
-        var x_t_buff:[Double]  = [Double](repeating: 0, count: 40)
-        var y_t_buff:[Double]  = [Double](repeating: 0, count: 40)
-        
-        while(correlationRunning){
-            print("---- Calculating coorelation ---")
-            //let test1:[Double] =  wattom1.getBuffer()[0]
-            print(pearson(x:wattom1.getBuffer()[0], y:wattomTouch.getBuffer()[0]))
-            print(pearson(x:wattom1.getBuffer()[1], y:wattomTouch.getBuffer()[1]))
-            
-            sleep(1)
-        }
-    }*/
+
     
     
     func calculateCorreation(){
         
-        sleep(4)
+        sleep(2)
         var touch:Array<[Double]>
         var corr1:Double
         var corr2:Double
         while(correlationRunning){
-            //print("---- Calculating coorelation ---")
-            //let test1:[Double] =  wattom1.getBuffer()[0]
-            //print(wattom1.getBuffer()[0])
-            //print("#")
-            //print( wattomTouch.getBuffer()[0])
+            //calculates the correlation of each wattom view element, this is the worst part of the code , as it still completely static, with a reference for the view elements we could do it with a two dimensions array
+            // with a positive correlation we change the wattom correlation flag
             touch = wattomTouch.getBuffer()
             corr1 = (pearson(x:wattom1.getBuffer()[0], y:touch[0])) ?? 0
             corr2 = (pearson(x:wattom1.getBuffer()[1], y:touch[1])) ?? 0
