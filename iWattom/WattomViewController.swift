@@ -11,7 +11,7 @@ import UIKit
 class WattomViewController: UIViewController {
     
     
-    // variables for the view elements, there should be a way of adding them programmatically to the view so we get an reference, however for know it works OK.
+    // variables for the view elements, there should be a way of adding them programmatically to the view so we get an reference, however for now it works OK.
     @IBOutlet weak var wattomTouch: WattomTouchView!
     @IBOutlet weak var wattom1: WattomAnimation!
     @IBOutlet weak var wattom2: WattomAnimation!
